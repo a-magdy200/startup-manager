@@ -2,12 +2,15 @@ import React from 'react';
 import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 interface ButtonProps {
     buttonText: string;
-    handler: any
+    handler: any;
+    customStyles?: any
 }
-const Button = ({buttonText, handler}: ButtonProps) => {
+const Button = ({buttonText, handler, customStyles}: ButtonProps) => {
     const {buttonStyle, textStyle} = styles;
-    return <TouchableOpacity style={buttonStyle} onPress={handler}>
-        <Text style={textStyle}>{buttonText}</Text>
+    const buttonStyles = customStyles ? {...buttonStyle, ...customStyles.buttonStyles} : buttonStyle;
+    const textStyles = customStyles ? {...textStyle, ...customStyles.textStyles} : textStyle;
+    return <TouchableOpacity style={buttonStyles} onPress={handler}>
+        <Text style={textStyles}>{buttonText}</Text>
     </TouchableOpacity>
 };
 const styles = StyleSheet.create({

@@ -2,19 +2,20 @@ import React from 'react';
 import {Text, StyleSheet, View, TextInput} from 'react-native';
 interface InputProps {
     label: string;
-    secure: boolean;
-    autoComplete: 'off' | 'username' | 'password' | 'email' | 'name' | 'tel' | 'street-address' | 'postal-code' | 'cc-number' | 'cc-csc' | 'cc-exp' | 'cc-exp-month' | 'cc-exp-year';
+    secure?: boolean;
+    autoComplete?: 'off' | 'username' | 'password' | 'email' | 'name' | 'tel' | 'street-address' | 'postal-code' | 'cc-number' | 'cc-csc' | 'cc-exp' | 'cc-exp-month' | 'cc-exp-year';
     placeholder: string;
     value: string;
     onChangeText: any;
+    autoCorrect?: boolean;
 }
-const Input = ({label, secure, autoComplete = 'off', placeholder, value, onChangeText}: InputProps) => {
+const Input = ({label, secure = false, autoCorrect = false, autoComplete = 'off', placeholder, value, onChangeText}: InputProps) => {
     const {inputStyle, containerStyle, labelStyle} = styles;
     return <View style={containerStyle}>
         <Text style={labelStyle}>{label}</Text>
         <TextInput
             placeholder={placeholder}
-            autoCorrect={false}
+            autoCorrect={autoCorrect}
             autoCompleteType={autoComplete}
             secureTextEntry={secure}
             value={value}

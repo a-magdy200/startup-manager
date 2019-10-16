@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, ActivityIndicator, StyleSheet} from 'react-native';
 interface SpinnerProps {
-    size: 'small' | number | 'large';
+    size?: 'small' | number | 'large';
 }
 const Spinner = ({size}: SpinnerProps) => {
     const {spinnerStyle} = styles;
